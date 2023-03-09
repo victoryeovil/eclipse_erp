@@ -5,6 +5,10 @@ from .serializers import TaskSerializer, MediaSerializer
 class TaskListCreateAPIView(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    
+    def get_queryset(self):
+        return self.queryset()
+    
 
 class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
